@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,td{
+            border: 3px rgb(0, 55, 255) solid;
+            color: red;
+            background-color: aqua;
+            border-collapse: collapse;
+            
+        }
+        td{
+            padding: 5px;
+        }
+        div{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin: 10px;">
+        <a href="homework1.html">homework1</a>
+        <a href="homework2.html">homework2</a>
+        <a href="homework3.html">homework3</a>
+        <a href="homework4.html">homework4</a>
+        <a href="homework5.html">homework5</a>
+        <a href="homework6.html">homework6</a>
+    </div>
+    <table>
+        <tr>
+        <script>
+            for(let i=2;i<10;i++){
+                document.write("<td>");
+                for(let j=1;j<10;j++){
+                    document.write(`${i}*${j}=${i*j}<br>`);
+                }
+                document.write("</td>");
+            }
+        </script>
+        </tr>
+    </table>
+</body>
+</html>

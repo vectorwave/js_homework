@@ -1,0 +1,13 @@
+img{
+    width:200px;
+}
+p{
+    text-align: center;
+    font-size: xx-large;
+}
+.stars{
+    margin-left: 15%;
+}
+.bw{
+    filter: grayscale(100%);
+}

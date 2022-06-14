@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#adimg{
+    height:400px;
+}
+
+fieldset{
+    margin: 0 15%;
+    text-align:center;
+    background-color: aquamarine;
+    border: 5px red solid;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px 3px rgb(31, 29, 29);
+}
+legend{
+    font-size: xx-large;
+    padding: 5px;
+}
+.indexbutton img{
+    height: 80px;
+}
+button{
+    border-radius: 20px;
+    padding: 5px;
+    margin: 0 20px;
+}
+.arrowbutton{
+    margin: 20px 0;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src=taiwan_districts.js></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            display: inline
+        }
+
+        td {
+            border: 3px solid orange
+        }
+
+        .table {
+            width: 30%;
+            margin: 0 auto
+        }
+    </style>
+
+<body>
+    <div style=margin:10px><a href=homework1.html>homework1</a> <a href=homework2.html>homework2</a> <a
+            href=homework3.html>homework3</a> <a href=homework4.html>homework4</a> <a href=homework5.html>homework5</a>
+        <a href=homework6.html>homework6</a>
+    </div>
+    <div class=table>
+        <h2>台灣行政區郵遞區號</h2>
+        <table>
+            <tbody id=table>
+        </table> <select id=disSelect></select> <select id=zipSelect></select>
+    </div>
+    <script>
+        let table = document.getElementById("table");
+        let disSelect = document.getElementById("disSelect");
+        let zipSelect = document.getElementById("zipSelect");
+        let n = 0;
+        for (let district of data) {
+            let option = document.createElement("option");
+            option.value = n;
+            option.innerText = district.name;
+            disSelect.appendChild(option); n++;
+        }
+        disSelect.addEventListener("change", updateZipSelect);
+        updateZipSelect();
+        function updateZipSelect() {
+            zipSelect.innerText = "";
+            let disnumber = disSelect.value;
+            let ziplist = data[disnumber].districts;
+            for (let zipname of ziplist) {
+                let option = document.createElement("option");
+                option.innerText = zipname.name;
+                zipSelect.appendChild(option);
+            }
+        }
+        for (let district of data) {
+            let title = true; for (let zip of district.districts) {
+                let tr = document.createElement("tr");
+                let tdname = document.createElement("td");
+                let tdzip = document.createElement("td");
+                tdname.innerText = zip.name;
+                tdzip.innerText = zip.zip;
+                if (title) {
+                    let districtname = document.createElement("td");
+                    districtname.innerText = district.name;
+                    districtname.rowSpan = district.districts.length;
+                    tr.appendChild(districtname); title = false;
+                }
+                tr.appendChild(tdname);
+                tr.appendChild(tdzip);
+                table.appendChild(tr);
+            }
+        }
+    </script>
+</body>

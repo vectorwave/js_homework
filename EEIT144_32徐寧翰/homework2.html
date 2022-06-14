@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </style>
+    <link rel="stylesheet" href="homework2.css">
+    <script  src="homework2.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded",init);
+    </script>
+</head>
+
+<body>
+    <div style="margin: 10px;">
+        <a href="homework1.html">homework1</a>
+        <a href="homework2.html">homework2</a>
+        <a href="homework3.html">homework3</a>
+        <a href="homework4.html">homework4</a>
+        <a href="homework5.html">homework5</a>
+        <a href="homework6.html">homework6</a>
+    </div>
+    <form action="">
+        <fieldset>
+            <legend><strong>Form Check</strong></legend>
+            <div class="area">
+                <label for="name">姓名:</label>
+                <input type="text" id="name">
+                <span class="checkmessage" id="wname">
+            </div>
+            <p class="description">(1.不可空白2.至少兩個字以上3.必須全部為中文字)</p>
+            </div>
+            <div class="area">
+                <label for="password">密碼:</label>
+                <input type="password" id="password">
+                <span class="checkmessage" id="wpassword">
+            </div>
+            <p class="description">(1.不可空白2.至少6個字且必須包含英數字、特殊字元[!@#$%^&*])</p>
+            </div>
+            <div class="area">
+                <label for="date">日期:</label>
+                <input type="text" id="date">
+                <span class="checkmessage" id="wdate">
+            </div>
+            <p class="description">格式:西元年/月/日(yyyy/mm/dd)</p>
+            </div>
+        </fieldset>
+    </form>
+</body>
+
+</html>

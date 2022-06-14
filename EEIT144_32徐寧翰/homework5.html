@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .dateselector {
+            width: 20%;
+            margin: 10% auto;
+            transform: scale(1.5,1.5);
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 3px solid green;
+            line-height: 30px;
+            text-align: center;
+        }
+        .title>td{
+            background-color: bisque;
+            padding: 3px;
+        }
+        .focus {
+            background-color: rgb(152, 132, 34);
+            color: azure;
+        }
+        p{
+            margin:3px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin: 10px;">
+        <a href="homework1.html">homework1</a>
+        <a href="homework2.html">homework2</a>
+        <a href="homework3.html">homework3</a>
+        <a href="homework4.html">homework4</a>
+        <a href="homework5.html">homework5</a>
+        <a href="homework6.html">homework6</a>
+    </div>
+    <div class="dateselector">
+        <form action="">
+            <select  id="year" ></select>年
+            <select  id="month" ></select>月
+            <select  id="day"></select>日
+        </form>
+        <p>你選擇的日期是<span></span>年<span></span>月<span></span>日</p>
+        <table>
+            <tbody id="calendar">
+                <tr class="title">
+                    <td>SON</td>
+                    <td>MON</td>
+                    <td>THU</td>
+                    <td>WED</td>
+                    <td>THU</td>
+                    <td>FRI</td>
+                    <td>SAT</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let year = document.getElementById("year");
+        let month = document.getElementById("month");
+        let day = document.getElementById("day");
+        let text = document.getElementsByTagName("span");
+        let calendar = document.getElementById("calendar");
+        //初始化
+        year.addEventListener("change", update);
+        month.addEventListener("change", update);
+        day.addEventListener("change", ()=>{updateText(),focus()});
+        
+        createCalendar();
+        setSelect(year, 2010, 2030);
+        setSelect(month, 1, 12);
+        update();
+        
+
+
+        function setSelect(column, begin, end) {
+            column.innerHTML = "";
+            for (let i = begin; i <= end; i++) {
+                let op = document.createElement("option");
+                let optext = document.createTextNode(i);
+                op.appendChild(optext);
+                column.appendChild(op);
+            }
+        }
+        function updateText() {
+            text[0].innerText = year.value;
+            text[1].innerText = month.value;
+            text[2].innerText = day.value;
+        }
+        function updateDay() {
+            let testdate = new Date(year.value, month.value, 0);
+            let daylimit = testdate.getDate();
+            setSelect(day, 1, daylimit);
+        }
+        function update(){
+            let testdate = new Date(year.value, month.value, 0);
+            let daylimit = testdate.getDate();
+            let testday = new Date(year.value,month.value-1,1);
+            let today = testday.getDay();
+            setSelect(day, 1, daylimit);
+            updateText();
+            updateCalendar(today,daylimit);
+            focus();
+        }
+        function focus(){
+            let tds =document.getElementsByTagName("td");
+            let focus=day.value;
+            for(let td of tds){
+                if(td.innerText!=focus){
+                    td.className="";
+                }
+                else{
+                    td.className="focus";
+                }
+            }            
+        }
+        function createCalendar() {
+            for (let i = 0; i < 6; i++) {
+                let week = document.createElement("tr");
+                for (let j = 0; j < 7; j++) {
+                    let day = document.createElement("td");
+                    week.appendChild(day);
+                }
+                calendar.appendChild(week);
+            }
+        }
+        function updateCalendar(begin, daylimit) {
+            let cc = calendar.children;
+            let n = 1;
+            for (let tr = 1; tr < cc.length; tr++) {
+                let trc = cc[tr].children;
+                for (let td = 0; td < trc.length; td++) {
+                    if ((tr == 1 & td < begin) | n > daylimit)
+                        trc[td].innerText = "";
+                    else {
+                        trc[td].innerText = n;
+                        n++;
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

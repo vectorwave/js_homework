@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset {
+    border: 10px solid red;
+    border-radius: 20px;
+    margin: 20px;
+    padding:30px;
+}
+img{
+    width:25px;
+    margin-right:3px;
+}
+
+legend {
+    margin-left: 30px;
+}
+label{
+    margin-right: 3px;
+}
+
+.checkmessage {
+
+    color: red;
+}
+.right{
+    color: green;
+}
+
+.area {
+    margin: 10px;
+    border-bottom: 5px dotted rgb(189, 182, 182);
+    padding-bottom: 5px;
+}
+
+.description {
+    color: rgb(159, 155, 155);
+    font-size: small;
+}
